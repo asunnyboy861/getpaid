@@ -13,6 +13,7 @@ struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var viewModel: SettingsViewModel?
     @State private var storeManager = StoreManager.shared
+    @State private var showContactSupport: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -31,6 +32,9 @@ struct SettingsView: View {
                 if let viewModel = viewModel {
                     EditSettingsSheet(viewModel: viewModel)
                 }
+            }
+            .sheet(isPresented: $showContactSupport) {
+                ContactSupportView()
             }
             .alert("Purchase Error", isPresented: Binding(
                 get: { storeManager.errorMessage != nil },
@@ -171,7 +175,9 @@ struct SettingsView: View {
                 Label("Terms of Service", systemImage: "doc.text")
             }
             
-            Link(destination: URL(string: "mailto:support@getpaid.app")!) {
+            Button {
+                showContactSupport = true
+            } label: {
                 Label("Contact Support", systemImage: "envelope")
             }
         }
