@@ -167,11 +167,11 @@ struct SettingsView: View {
         Section("About") {
             LabeledContent("Version", value: "1.0.0")
             
-            Link(destination: URL(string: "https://getpaid.app/privacy")!) {
+            Link(destination: URL(string: "https://getpaid-privacy.vercel.app")!) {
                 Label("Privacy Policy", systemImage: "hand.raised")
             }
             
-            Link(destination: URL(string: "https://getpaid.app/terms")!) {
+            Link(destination: URL(string: "https://getpaid-support.vercel.app")!) {
                 Label("Terms of Service", systemImage: "doc.text")
             }
             
